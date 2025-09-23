@@ -1,0 +1,27 @@
+import tkinter as tk
+from time import strftime
+
+def update_time():
+    """Updates the digital clock label with the current time."""
+    string_time = strftime('%H:%M:%S %p')  # Format the time as HH:MM:SS AM/PM
+    digital_clock.config(text=string_time)
+    digital_clock.after(1000, update_time)  # Call update_time again after 1000ms (1 second)
+
+# Create the main Tkinter window
+root = tk.Tk()
+root.title("Digital Clock")
+
+# Configure the digital clock label
+digital_clock = tk.Label(
+    root,
+    font=('calibri', 40, 'bold'),
+    background='black',
+    foreground='white'
+)
+digital_clock.pack(pady=20)  # Pack the label with some vertical padding
+
+# Initial call to update_time to set the time when the clock starts
+update_time()
+
+# Start the Tkinter event loop
+root.mainloop()
