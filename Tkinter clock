@@ -1,0 +1,28 @@
+import tkinter as tk
+from time import strftime
+
+# Create the main window
+root = tk.Tk()
+root.title("Digital Clock")
+
+# Function to update the time and date
+def update_time():
+    current_time = strftime("%H:%M:%S %p")  # Format: Hours:Minutes:Seconds AM/PM
+    current_date = strftime("%A, %d %B %Y")  # Format: Weekday, Day Month Year
+    time_label.config(text=current_time)
+    date_label.config(text=current_date)
+    time_label.after(1000, update_time)  # Update every 1 second
+
+# Create and style the time label
+time_label = tk.Label(root, font=("Helvetica", 48), fg="blue", bg="black")
+time_label.pack(pady=10)
+
+# Create and style the date label
+date_label = tk.Label(root, font=("Helvetica", 24), fg="green", bg="black")
+date_label.pack(pady=10)
+
+# Start the clock
+update_time()
+
+# Run the Tkinter event loop
+root.mainloop()
